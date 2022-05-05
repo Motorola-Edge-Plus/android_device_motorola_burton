@@ -8,8 +8,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from the SM8250 Motorola configuration.
-$(call inherit-product, device/motorola/sm8250-common/common.mk)
+$(call inherit-product, device/motorola/burton/device.mk)
 
 # Inherit from the Lineage configuration.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
