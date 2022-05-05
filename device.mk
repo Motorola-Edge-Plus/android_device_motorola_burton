@@ -9,3 +9,7 @@ $(call inherit-product, device/motorola/sm8250-common/common.mk)
 
 # Inherit proprietary targets
 $(call inherit-product-if-exists, vendor/motorola/burton/burton-vendor.mk)
+
+# Overlays
+PRODUCT_PACKAGES += \
+	BurtonWifiRes
