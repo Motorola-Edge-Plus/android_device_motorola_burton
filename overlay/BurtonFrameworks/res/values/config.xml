@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+
+   <!-- Array of desired screen brightness in nits corresponding to the lux values
+         in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
+         config_screenBrightnessMaximumNits, the display brightness is defined as the measured
+         brightness of an all-white image.
+
+         If this is defined then:
+            - config_autoBrightnessLcdBacklightValues should not be defined
+            - config_screenBrightnessNits must be defined
+            - config_screenBrightnessBacklight must be defined
+
+         This array should have size one greater than the size of the config_autoBrightnessLevels
+         array. The brightness values must be non-negative and non-decreasing. This must be
+         overridden in platform specific overlays -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>2</item>
+        <item>3.6</item>
+        <item>5.2</item>
+        <item>6.8</item>
+        <item>8.4</item>
+        <item>10</item>
+        <item>16</item>
+        <item>20</item>
+        <item>24</item>
+        <item>40</item>
+        <item>66</item>
+        <item>80</item>
+        <item>83.3</item>
+        <item>90.8</item>
+        <item>93</item>
+        <item>99.8</item>
+        <item>113.6</item>
+        <item>125</item>
+        <item>128</item>
+        <item>138.2</item>
+        <item>155</item>
+        <item>161</item>
+        <item>173.6</item>
+        <item>200.2</item>
+        <item>212</item>
+        <item>420</item>
+    </array>
+
+    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+         ...
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if lux == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for lux levels between these control points.
+
+         Must be overridden in platform specific overlays -->
+    <array name="config_autoBrightnessLevels">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>20</item>
+        <item>33</item>
+        <item>40</item>
+        <item>55</item>
+        <item>90</item>
+        <item>100</item>
+        <item>148</item>
+        <item>245</item>
+        <item>325</item>
+        <item>403</item>
+        <item>665</item>
+        <item>1097</item>
+        <item>1250</item>
+        <item>1808</item>
+        <item>2981</item>
+        <item>3500</item>
+        <item>5500</item>
+    </array>
+
+    <!-- An array describing the screen's backlight values corresponding to the brightness
+         values in the config_screenBrightnessNits array.
+
+         This array should be equal in size to config_screenBrightnessBacklight. -->
+    <array name="config_screenBrightnessBacklight">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>22</item>
+        <item>36</item>
+        <item>48</item>
+        <item>50</item>
+        <item>54</item>
+        <item>56</item>
+        <item>61</item>
+        <item>70</item>
+        <item>78</item>
+        <item>80</item>
+        <item>86</item>
+        <item>96</item>
+        <item>99</item>
+        <item>105</item>
+        <item>117</item>
+        <item>122</item>
+        <item>255</item>
+    </array>
+
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
+         values in the config_screenBrightnessBacklight array.  On OLED displays these  values
+         should be measured with an all white image while the display is in the fully on state.
+         Note that this value should *not* reflect the maximum brightness value for any high
+         brightness modes but only the maximum brightness value obtainable in a sustainable manner.
+
+         This array should be equal in size to config_screenBrightnessBacklight -->
+    <array name="config_screenBrightnessNits">
+        <item>0</item>
+        <item>2</item>
+        <item>3.6</item>
+        <item>5.2</item>
+        <item>6.8</item>
+        <item>8.4</item>
+        <item>10</item>
+        <item>16</item>
+        <item>20</item>
+        <item>24</item>
+        <item>40</item>
+        <item>66</item>
+        <item>80</item>
+        <item>83.3</item>
+        <item>90.8</item>
+        <item>93</item>
+        <item>99.8</item>
+        <item>113.6</item>
+        <item>125</item>
+        <item>128</item>
+        <item>138.2</item>
+        <item>155</item>
+        <item>161</item>
+        <item>173.6</item>
+        <item>200.2</item>
+        <item>212</item>
+        <item>420</item>
+    </array>
+
+    <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
+    <array name="config_availableColorModes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </array>
+
+    <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
+    <!-- If true, the doze component is not started until after the screen has been
+         turned off and the screen off animation has been performed. -->
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+         due to the proximity sensor.  This resource should only be set to true
+         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+         Otherwise, the device may fail to wake out of suspend reliably.
+         The default is false. -->
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+
+
+    <!-- Height of the status bar.
+         Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
+         -->
+    <dimen name="status_bar_height">100px</dimen>
+
+    <!-- Height of the status bar in portrait.
+         Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
+         -->
+    <dimen name="status_bar_height_landscape">36dp</dimen>
+
+    <!-- Height of the status bar in landscape.
+         Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
+         -->
+    <dimen name="status_bar_height_portrait">100px</dimen>
+
+    <!-- For main built-in Waterfall Display -->
+    <dimen name="waterfall_display_left_edge_size">30px</dimen>
+    <dimen name="waterfall_display_right_edge_size">30px</dimen>
+
+    <!-- The default refresh rate for a given device. Change this value to set a higher default
+         refresh rate. If the hardware composer on the device supports display modes with a higher
+         refresh rate than the default value specified here, the framework may use those higher
+         refresh rate modes if an app chooses one by setting preferredDisplayModeId or calling
+         setFrameRate().
+         If a non-zero value is set for config_defaultPeakRefreshRate, then
+         config_defaultRefreshRate may be set to 0, in which case the value set for
+         config_defaultPeakRefreshRate will act as the default frame rate. -->
+    <integer name="config_defaultRefreshRate">0</integer>
+
+    <!-- The default peak refresh rate for a given device. Change this value if you want to prevent
+         the framework from using higher refresh rates, even if display modes with higher refresh
+         rates are available from hardware composer. Only has an effect if the value is
+         non-zero. -->
+    <integer name="config_defaultPeakRefreshRate">90</integer>
+
+    <!-- The bounding path of the cutout region of the main built-in display.
+         Must either be empty if there is no cutout region, or a string that is parsable by
+         {@link android.util.PathParser}.
+
+         The path is assumed to be specified in display coordinates with pixel units and in
+         the display's native orientation, with the origin of the coordinate system at the
+         center top of the display. Optionally, you can append either `@left` or `@right` to the
+         end of the path string, in order to change the path origin to either the top left,
+         or top right of the display.
+
+         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
+         appended after the path string to interpret coordinates in dp instead of px units.
+         Note that a physical cutout should be configured in pixels for the best results.
+
+         Example for a 10px x 10px square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
+         Example for a 10dp x 10dp square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z @dp</string>
+
+         @see https://www.w3.org/TR/SVG/paths.html#PathData
+         -->
+    <string name="config_mainBuiltInDisplayCutout">M -980,0 L -914,0 L -914,95 L -980,95 Z @right</string>
+
+    <!-- MMS user agent string -->
+    <string name="config_mms_user_agent">motorolaedgeplus</string>
+
+    <!-- MMS user agent prolfile url -->
+    <string name="config_mms_user_agent_profile_url">http://uaprof.motorola.com/phoneconfig/motov1/Profile/motov1.rdf</string>
+
+    <!-- Default radius of the software rounded corners. -->
+    <dimen name="rounded_corner_radius">105px</dimen>
+
+    <!-- Screen brightness used to dim the screen when the user activity
+         timeout expires.  May be less than the minimum allowed brightness setting
+         that can be set by the user. -->
+    <integer name="config_screenBrightnessDim">4</integer>
+
+    <!-- Note: This setting is deprecated, please use
+    config_screenBrightnessSettingMinimumFloat instead -->
+    <integer name="config_screenBrightnessSettingMinimum">2</integer>
+
+</resources>
