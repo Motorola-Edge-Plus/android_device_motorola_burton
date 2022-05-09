@@ -9,5 +9,8 @@ include device/motorola/sm8250-common/BoardConfig.mk
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := burton
 
+# Fingerprint
+TARGET_USES_FOD_ZPOS := true
+
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/ext_config/burton-default.config
