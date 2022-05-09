@@ -11,4 +11,7 @@
 
     <dimen name="status_bar_padding_top">16px</dimen>
 
+    <!-- The radius of the enrollment progress bar, in DP. -->
+    <integer name="config_udfpsEnrollProgressBar">192</integer>
+
 </resources>

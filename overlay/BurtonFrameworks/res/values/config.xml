@@ -282,4 +282,11 @@
     config_screenBrightnessSettingMinimumFloat instead -->
     <integer name="config_screenBrightnessSettingMinimum">2</integer>
 
+    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
+    <integer-array name="config_udfps_sensor_props" translatable="false" >
+        <item>540</item> <!-- sensorLocationX -->
+        <item>2011</item> <!-- sensorLocationY -->
+        <item>114</item> <!-- sensorRadius -->
+    </integer-array>
+
 </resources>

@@ -13,5 +13,6 @@ $(call inherit-product-if-exists, vendor/motorola/burton/burton-vendor.mk)
 # Overlays
 PRODUCT_PACKAGES += \
 	BurtonFrameworks \
+	BurtonLineageSystemUI \
 	BurtonSystemUI \
 	BurtonWifiRes
