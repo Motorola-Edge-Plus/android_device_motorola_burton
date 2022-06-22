@@ -18,3 +18,6 @@ TARGET_USES_FOD_ZPOS := true
 
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/ext_config/burton-default.config
+
+# Properties
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
