@@ -5,6 +5,7 @@
 #
 
 COMMON_PATH := device/motorola/sm8250-common
+DEVICE_PATH := device/motorola/burton
 
 include device/motorola/sm8250-common/BoardConfig.mk
 
